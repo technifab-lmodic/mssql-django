@@ -325,7 +325,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
             cstr_parts['UID'] = user
             if 'Authentication=ActiveDirectoryInteractive' not in options_extra_params:
                 cstr_parts['PWD'] = password
-        elif 'TOKEN' not in conn_params:
+        if 'TOKEN' not in conn_params:
             if ms_drivers.match(driver) and 'Authentication=ActiveDirectoryMsi' not in options_extra_params:
                 cstr_parts['Trusted_Connection'] = trusted_connection
             else:
